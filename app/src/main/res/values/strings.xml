@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AirNow</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">AirNow</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="hint_text">Locations</string>
 </resources>

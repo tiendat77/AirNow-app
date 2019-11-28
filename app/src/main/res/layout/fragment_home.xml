@@ -1,19 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--Toolbar-->
+
+    <!--        <com.google.android.material.textfield.TextInputLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:hint="@string/hint_text"-->
+    <!--            android:paddingStart="@dimen/content_padding_start_end"-->
+    <!--            android:paddingEnd="@dimen/content_padding_start_end">-->
+
+    <!--            <com.google.android.material.textfield.TextInputEditText-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+    <!-- Main Contents -->
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:minHeight="100dp"
+        app:cardCornerRadius="15dp">
+
+        <!-- Card contents. -->
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:orientation="vertical"
+          android:weightSum="10">
+
+          <!--Title-->
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="Ho Chi Minh City"
+              android:textSize="20dp"
+              android:textStyle="bold" />
+
+            <LinearLayout
+              android:layout_width="fill_parent"
+              android:layout_height="match_parent"
+              android:gravity="right"
+              android:orientation="horizontal">
+
+              <!--Temperature-->
+
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                  android:layout_width="30dp"
+                  android:layout_height="match_parent"
+                  android:src="@drawable/ic_01d_ic_clear_sky" />
+
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center"
+                  android:text="28°"
+                  android:textSize="15dp" />
+
+              </LinearLayout>
+
+              <!--Humidity-->
+
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                  android:layout_width="30dp"
+                  android:layout_height="match_parent"
+                  android:src="@drawable/ic_humidity_small" />
+
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:gravity="center"
+                  android:text="83%"
+                  android:textSize="15dp" />
+
+              </LinearLayout>
+
+            </LinearLayout>
+
+          </LinearLayout>
+
+          <!--Content-->
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:background="@color/card_bg_lv2"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <!--Face icon-->
+
+            <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="3"
+              android:background="@color/card_face_lv2">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_face_yellow" />
+
+            </LinearLayout>
+
+            <!--Air info-->
+
+            <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="7"
+              android:orientation="horizontal"
+              android:paddingLeft="20dp"
+              android:paddingTop="10dp"
+              android:paddingRight="20dp"
+              android:paddingBottom="10dp"
+              android:weightSum="10">
+
+              <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+                <TextView
+                  android:id="@+id/aqi_value"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerHorizontal="true"
+                  android:text="91"
+                  android:textColor="@color/card_text_lv2"
+                  android:textSize="35dp"
+                  android:textStyle="bold" />
+
+                <TextView
+                  android:id="@+id/aqi_type"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:layout_centerHorizontal="true"
+                  android:text="US AQI"
+                  android:textColor="@color/card_text_lv2"
+                  android:textSize="18dp" />
+
+              </RelativeLayout>
+
+              <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6">
+
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentTop="true"
+                  android:layout_centerHorizontal="true"
+                  android:text="Moderate"
+                  android:textColor="@color/card_text_lv2"
+                  android:textSize="23dp"
+                  android:textStyle="bold" />
+
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:layout_centerHorizontal="true"
+                  android:paddingRight="5dp"
+                  android:paddingLeft="5dp"
+                  android:background="@drawable/rounded_corners"
+                  android:text="PM2.5 | 31 µg/m³"
+                  android:textColor="@color/card_text_lv2"
+                  android:textSize="15dp"
+                  android:textStyle="bold" />
+
+              </RelativeLayout>
+
+            </LinearLayout>
+
+          </LinearLayout>
+
+        </LinearLayout>
+
+      </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
