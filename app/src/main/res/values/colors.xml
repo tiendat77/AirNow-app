@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="card_text_lv2">#a57f23</color>
+    <color name="card_bg_lv2">#ffdf58</color>
+    <color name="card_face_lv2">#fdd74b</color>
 </resources>
