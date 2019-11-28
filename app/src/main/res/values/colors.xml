@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+  <!--App-->
+  <color name="colorPrimary">#008577</color>
+  <color name="colorPrimaryDark">#00574B</color>
+  <color name="colorAccent">#D81B60</color>
 
-    <color name="card_text_lv2">#a57f23</color>
-    <color name="card_bg_lv2">#ffdf58</color>
-    <color name="card_face_lv2">#fdd74b</color>
+  <!--Forecast-->
+  <!--Green-->
+  <color name="card_bg_lv1">#b0e867</color>
+  <color name="card_face_lv1">#a8e05f</color>
+  <color name="card_text_lv1">#718b3a</color>
+  <!--Yellow-->
+  <color name="card_bg_lv2">#ffdf58</color>
+  <color name="card_face_lv2">#fdd74b</color>
+  <color name="card_text_lv2">#a57f23</color>
+  <!--Orange-->
+  <color name="card_bg_lv3">#ffa968</color>
+  <color name="card_face_lv3">#fe9b57</color>
+  <color name="card_text_lv3">#b25826</color>
+  <!--Red-->
+  <color name="card_bg_lv4">#ff7978</color>
+  <color name="card_face_lv4">#fe6a69</color>
+  <color name="card_text_lv4">#af2c3b</color>
+  <!--Opera Mauve-->
+  <color name="card_bg_lv5">#b283c5</color>
+  <color name="card_face_lv5">#a97abc</color>
+  <color name="card_text_lv5">#634675</color>
+
+
 </resources>
