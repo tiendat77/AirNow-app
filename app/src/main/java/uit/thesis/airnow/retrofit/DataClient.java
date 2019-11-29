@@ -6,26 +6,26 @@ import java.util.List;
 
 public class DataClient {
 
-    @SerializedName("aqi")
-    private List<DataAQI> dataAQIList;
+  @SerializedName("aqi")
+  private List<DataAQI> dataAQIList;
 
-    public List<DataAQI> getDataAQIList() {
-        return dataAQIList;
-    }
+  public List<DataAQI> getDataAQIList() {
+    return dataAQIList;
+  }
 
-    @SerializedName("humidity")
-    private List<DataHumidity> dataHumidityList;
+  @SerializedName("humidity")
+  private List<DataHumidity> dataHumidityList;
 
-    public List<DataHumidity> getDataHumidityList() {
-        return dataHumidityList;
-    }
+  public List<DataHumidity> getDataHumidityList() {
+    return dataHumidityList;
+  }
 
-    @SerializedName("temperature")
-    private List<DataTemperature> dataTemperatureList;
+  @SerializedName("temperature")
+  private List<DataTemperature> dataTemperatureList;
 
-    public List<DataTemperature> getDataTemperatureList() {
-        return dataTemperatureList;
-    }
+  public List<DataTemperature> getDataTemperatureList() {
+    return dataTemperatureList;
+  }
 
 }
 

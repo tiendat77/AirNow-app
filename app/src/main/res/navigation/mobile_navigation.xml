@@ -22,4 +22,10 @@
         android:name="uit.thesis.airnow.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_smart_config"
+        android:name="uit.thesis.airnow.ui.smartconfig.SmartConfigEsp"
+        android:label="SmartConfig"
+        tools:layout="@layout/fragment_smart_config_esp" />
 </navigation>

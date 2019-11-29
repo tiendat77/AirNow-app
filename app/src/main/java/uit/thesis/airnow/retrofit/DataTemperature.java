@@ -3,24 +3,24 @@ package uit.thesis.airnow.retrofit;
 import com.google.gson.annotations.SerializedName;
 
 public class DataTemperature {
-    @SerializedName("time")
-    private String time;
+  @SerializedName("time")
+  private String time;
 
-    public String getTime() {
-        return time;
-    }
+  public String getTime() {
+    return time;
+  }
 
-    @SerializedName("degrees")
-    private int degrees;
+  @SerializedName("degrees")
+  private int degrees;
 
-    public int getDegrees() {
-        return degrees;
-    }
+  public int getDegrees() {
+    return degrees;
+  }
 
-    @SerializedName("location")
-    private String location;
+  @SerializedName("location")
+  private String location;
 
-    public String getLocation() {
-        return location;
-    }
+  public String getLocation() {
+    return location;
+  }
 }

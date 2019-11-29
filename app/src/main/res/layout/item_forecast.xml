@@ -57,7 +57,7 @@
               <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_01d_ic_clear_sky" />
+                android:src="@drawable/ic_temperature_small" />
 
               <TextView
                 android:layout_width="wrap_content"

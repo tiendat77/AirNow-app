@@ -4,37 +4,38 @@ import com.google.gson.annotations.SerializedName;
 
 public class DataAQI {
 
-    @SerializedName("time")
-    private String time;
+  @SerializedName("time")
+  private String time;
 
-    public String getTime() {
-        return time;
-    }
+  public String getTime() {
+    return time;
+  }
 
-    @SerializedName("aqi")
-    private int aqi;
+  @SerializedName("aqi")
+  private int aqi;
 
-    public int getAqi() {
-        return aqi;
-    }
+  public int getAqi() {
+    return aqi;
+  }
 
-    @SerializedName("description")
-    private String description;
+  @SerializedName("description")
+  private String description;
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    @SerializedName("pollutant")
-    private float pollutant;
+  @SerializedName("pollutant")
+  private float pollutant;
 
-    public float getPollutant() {
-        return pollutant;
-    }
-    @SerializedName("location")
-    private String location;
+  public float getPollutant() {
+    return pollutant;
+  }
 
-    public String getLocation() {
-        return location;
-    }
+  @SerializedName("location")
+  private String location;
+
+  public String getLocation() {
+    return location;
+  }
 }

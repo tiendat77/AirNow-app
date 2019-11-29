@@ -26,50 +26,49 @@ import uit.thesis.airnow.retrofit.DataClient;
 
 public class DashboardFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
-    Button mbutton;
+  private DashboardViewModel dashboardViewModel;
+  Button mbutton;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        mbutton = (Button) root.findViewById(R.id.test_button);
-        mbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                APIService APIService = APIUtils.getData();
-                Log.d("Test", "ahihi");
-                Call<DataClient> callback = APIService.getAirdata(10);
-                callback.enqueue(new Callback<DataClient>() {
-                    @Override
-                    public void onResponse(Call<DataClient> call, Response<DataClient> response) {
-                        if (response != null) {
-                            Gson gson = new Gson();
-                            DataClient data = response.body();
-// debug
-                            String dataJson = gson.toJson(data);
+  public View onCreateView(@NonNull LayoutInflater inflater,
+                           ViewGroup container, Bundle savedInstanceState) {
+    dashboardViewModel =
+        ViewModelProviders.of(this).get(DashboardViewModel.class);
+    View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+    final TextView textView = root.findViewById(R.id.text_dashboard);
+    dashboardViewModel.getText().observe(this, new Observer<String>() {
+      @Override
+      public void onChanged(@Nullable String s) {
+        textView.setText(s);
+      }
+    });
+    mbutton = (Button) root.findViewById(R.id.test_button);
+    mbutton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        APIService APIService = APIUtils.getData();
+        Call<DataClient> callback = APIService.getAirdata(10, "Thủ Đức");
+        callback.enqueue(new Callback<DataClient>() {
+          @Override
+          public void onResponse(Call<DataClient> call, Response<DataClient> response) {
+            if (response != null) {
+              Gson gson = new Gson();
+              DataClient data = response.body();
+
+              String dataJson = gson.toJson(data);
 //                            String dataJson = gson.toJson(data.getDataAQIList());
-                            Log.d("Test", dataJson);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<DataClient> call, Throwable t) {
-                        Log.d("Test_Err", t.getMessage());
-                    }
-                });
+              Log.d("Test", dataJson);
             }
+          }
+
+          @Override
+          public void onFailure(Call<DataClient> call, Throwable t) {
+            Log.d("Test_Err", t.getMessage());
+          }
         });
-        return root;
-    }
+      }
+    });
+    return root;
+  }
 
 
 }

@@ -6,6 +6,6 @@ import retrofit2.http.Query;
 
 public interface APIService {
 
-    @GET("airdata")
-    Call<DataClient> getAirdata(@Query("range") int range );
+  @GET("airdata")
+  Call<DataClient> getAirdata(@Query("range") int range, @Query("location") String location);
 }
