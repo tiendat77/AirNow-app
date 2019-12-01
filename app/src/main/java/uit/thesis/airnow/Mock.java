@@ -5,8 +5,6 @@ import uit.thesis.airnow.model.LocationModel;
 
 public class Mock {
 
-  public static String forecastJson = "{}";
-
   public static ForecastModel[] forecastModels = new ForecastModel[]{
       new ForecastModel("Kyoto", 7, 12, 3, 52, "Good"),
       new ForecastModel("Singapore", 27, 54, 13.8, 78, "Moderate"),

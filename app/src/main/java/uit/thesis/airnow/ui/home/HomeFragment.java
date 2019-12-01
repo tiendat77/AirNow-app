@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,7 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import uit.thesis.airnow.Mock;
 import uit.thesis.airnow.R;
-import uit.thesis.airnow.model.AQIModel;
 import uit.thesis.airnow.model.ForecastModel;
 import uit.thesis.airnow.retrofit.APIService;
 import uit.thesis.airnow.retrofit.APIUtils;
@@ -76,42 +76,30 @@ public class HomeFragment extends Fragment {
   }
 
   private void initModel() {
-    for (int i = 0; i < Mock.forecastModels.length; i++) {
-      forecastModels.add(Mock.forecastModels[i]);
-    }
+    swipeRefreshLayout.setRefreshing(true);
 
-    adapter = new ForecastAdapter(this.getContext(), forecastModels);
-
-    forecastListView.setAdapter(adapter);
-
-    Snackbar.make(getActivity().findViewById(R.id.container), "Done setup!", Snackbar.LENGTH_SHORT)
-        .setAction("OK", new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            // Do something here
-          }
-        });
+    refresh();
   }
 
   private void refresh() {
 
     APIService APIService = APIUtils.getData();
-    Call<DataClient> callback = APIService.getAirdata(10, "Thủ Đức");
+    Call<DataClient> callback = APIService.getForecast();
     callback.enqueue(new Callback<DataClient>() {
       @Override
       public void onResponse(Call<DataClient> call, Response<DataClient> response) {
         if (response != null) {
-          Gson gson = new Gson();
           DataClient data = response.body();
 
-          String dataJson = gson.toJson(data.getDataAQIList());
-          List<AQIModel> dataAQIList = data.getDataAQIList();
+          List<ForecastModel> forecastList = data.getForecastList();
 
-          for(AQIModel dataAQI: dataAQIList) {
-            Log.d(TAG, dataAQI.getDescription());
-          }
+          forecastModels.clear();
 
-          Log.d(TAG, dataJson);
+          forecastModels.addAll(forecastList);
+
+          adapter = new ForecastAdapter(getContext(), forecastModels);
+
+          forecastListView.setAdapter(adapter);
         }
       }
 
