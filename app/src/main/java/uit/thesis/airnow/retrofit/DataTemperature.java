@@ -7,13 +7,15 @@ public class DataTemperature {
   private String time;
 
   public String getTime() {
+
     return time;
   }
 
   @SerializedName("degrees")
-  private int degrees;
+  private double degrees;
 
-  public int getDegrees() {
+  public double getDegrees() {
+
     return degrees;
   }
 
@@ -21,6 +23,7 @@ public class DataTemperature {
   private String location;
 
   public String getLocation() {
+
     return location;
   }
 }

@@ -2,7 +2,7 @@ package uit.thesis.airnow.retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataAQI {
+public class DataForecast {
 
   @SerializedName("time")
   private String time;
@@ -20,12 +20,28 @@ public class DataAQI {
     return aqi;
   }
 
-  @SerializedName("description")
-  private String description;
+  @SerializedName("status")
+  private String status;
 
-  public String getDescription() {
+  public String getStatus() {
 
-    return description;
+    return status;
+  }
+
+  @SerializedName("temperature")
+  private double temperature;
+
+  public double getTemperature() {
+
+    return temperature;
+  }
+
+  @SerializedName("humidity")
+  private double humidity;
+
+  public double getHumidity() {
+
+    return humidity;
   }
 
   @SerializedName("pollutant")

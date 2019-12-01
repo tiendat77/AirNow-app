@@ -10,13 +10,22 @@ public class DataClient {
   private List<DataAQI> dataAQIList;
 
   public List<DataAQI> getDataAQIList() {
+
     return dataAQIList;
+  }
+
+  @SerializedName("forecast")
+  private List<DataForecast> dataForecastList;
+
+  public List<DataForecast> getDataForecastList() {
+    return dataForecastList;
   }
 
   @SerializedName("humidity")
   private List<DataHumidity> dataHumidityList;
 
   public List<DataHumidity> getDataHumidityList() {
+
     return dataHumidityList;
   }
 
@@ -24,8 +33,18 @@ public class DataClient {
   private List<DataTemperature> dataTemperatureList;
 
   public List<DataTemperature> getDataTemperatureList() {
+
     return dataTemperatureList;
   }
+
+  @SerializedName("locations")
+  private List<String> dataLocations;
+
+  public List<String> getDataLocationsList() {
+
+    return dataLocations;
+  }
+
 
 }
 

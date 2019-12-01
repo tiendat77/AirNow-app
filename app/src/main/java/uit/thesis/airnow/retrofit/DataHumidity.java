@@ -7,13 +7,15 @@ public class DataHumidity {
   private String time;
 
   public String getTime() {
+
     return time;
   }
 
   @SerializedName("humidity")
-  private int humidity;
+  private double humidity;
 
-  public int getHumidity() {
+  public double getHumidity() {
+
     return humidity;
   }
 
@@ -21,6 +23,7 @@ public class DataHumidity {
   private String location;
 
   public String getLocation() {
+
     return location;
   }
 }
