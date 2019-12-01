@@ -7,8 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-    <style name="Theme.MaterialTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    
+    <style name="MaterialTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <item name="colorPrimary">#03A9F4</item>
         <item name="colorPrimaryDark">#0E77CC</item>
     </style>

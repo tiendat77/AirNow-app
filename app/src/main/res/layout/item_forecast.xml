@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+      style="@style/Widget.MaterialComponents.CardView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="@dimen/mtrl_card_spacing"
+      android:layout_marginTop="@dimen/mtrl_card_spacing"
+      android:layout_marginRight="@dimen/mtrl_card_spacing"
+      android:minHeight="100dp"
+      app:cardCornerRadius="15dp">
+
+      <!-- Card contents. -->
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <!--Title-->
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="3"
+          android:paddingLeft="20dp"
+          android:paddingRight="20dp">
+
+          <TextView
+            android:id="@+id/text_forecast_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Ho Chi Minh City"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+          <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <!--Temperature-->
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_temperature_small" />
+
+              <TextView
+                android:id="@+id/text_forecast_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="28°"
+                android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <!--Humidity-->
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:paddingStart="10dp">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_humidity_small" />
+
+              <TextView
+                android:id="@+id/text_forecast_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="83%"
+                android:textSize="15dp" />
+
+            </LinearLayout>
+
+          </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Content-->
+
+        <LinearLayout
+          android:id="@+id/layout_forecast_aqi_bg"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="7"
+          android:background="@color/card_bg_lv2"
+          android:orientation="horizontal"
+          android:weightSum="10">
+
+          <!--Face icon-->
+
+          <LinearLayout
+            android:id="@+id/layout_forecast_aqi_face_bg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/card_face_lv2">
+
+            <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/image_forecast_aqi_face"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_face_yellow" />
+
+          </LinearLayout>
+
+          <!--Air info-->
+
+          <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:weightSum="10">
+
+            <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="3">
+
+              <TextView
+                android:id="@+id/text_forecast_aqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="91"
+                android:textColor="@color/card_text_lv2"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+              <TextView
+                android:id="@+id/text_forecast_aqi_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="US AQI"
+                android:textColor="@color/card_text_lv2"
+                android:textSize="18dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="7">
+
+              <TextView
+                android:id="@+id/text_forecast_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="Unhealthy for sensitive group"
+                android:textColor="@color/card_text_lv2"
+                android:textSize="19dp"
+                android:textStyle="bold" />
+
+              <TextView
+                android:id="@+id/text_forecast_pollutant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_corners"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="PM2.5 | 31.10 µg/m³"
+                android:textColor="@color/card_text_lv2"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            </RelativeLayout>
+
+          </LinearLayout>
+
+        </LinearLayout>
+
+      </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+  </LinearLayout>
+
+</RelativeLayout>
