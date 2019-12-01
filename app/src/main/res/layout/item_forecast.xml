@@ -35,6 +35,7 @@
           android:paddingRight="20dp">
 
           <TextView
+            android:id="@+id/text_forecast_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -60,6 +61,7 @@
                 android:src="@drawable/ic_temperature_small" />
 
               <TextView
+                android:id="@+id/text_forecast_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -81,6 +83,7 @@
                 android:src="@drawable/ic_humidity_small" />
 
               <TextView
+                android:id="@+id/text_forecast_humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -96,6 +99,7 @@
         <!--Content-->
 
         <LinearLayout
+          android:id="@+id/layout_forecast_aqi_bg"
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:layout_weight="7"
@@ -106,12 +110,14 @@
           <!--Face icon-->
 
           <LinearLayout
+            android:id="@+id/layout_forecast_aqi_face_bg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:background="@color/card_face_lv2">
 
             <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/image_forecast_aqi_face"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_face_yellow" />
@@ -134,10 +140,10 @@
             <RelativeLayout
               android:layout_width="0dp"
               android:layout_height="match_parent"
-              android:layout_weight="4">
+              android:layout_weight="3">
 
               <TextView
-                android:id="@+id/aqi_value"
+                android:id="@+id/text_forecast_aqi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -147,7 +153,7 @@
                 android:textStyle="bold" />
 
               <TextView
-                android:id="@+id/aqi_type"
+                android:id="@+id/text_forecast_aqi_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -161,19 +167,22 @@
             <RelativeLayout
               android:layout_width="0dp"
               android:layout_height="match_parent"
-              android:layout_weight="6">
+              android:layout_weight="7">
 
               <TextView
+                android:id="@+id/text_forecast_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="Moderate"
+                android:gravity="center_horizontal"
+                android:text="Unhealthy for sensitive group"
                 android:textColor="@color/card_text_lv2"
-                android:textSize="23dp"
+                android:textSize="19dp"
                 android:textStyle="bold" />
 
               <TextView
+                android:id="@+id/text_forecast_pollutant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -181,9 +190,9 @@
                 android:background="@drawable/rounded_corners"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:text="PM2.5 | 31 µg/m³"
+                android:text="PM2.5 | 31.10 µg/m³"
                 android:textColor="@color/card_text_lv2"
-                android:textSize="15dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
 
             </RelativeLayout>
