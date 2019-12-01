@@ -112,6 +112,18 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
         imageForecastAqiFace.setImageResource(R.drawable.ic_face_red);
         break;
       }
+
+      case "Very unhealthy": {
+        textForecastAqi.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+        textForecastAqiType.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+        textForecastStatus.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+        textForecastPollutant.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+
+        layoutForecastAqiBg.setBackgroundColor(getContext().getResources().getColor(R.color.card_bg_lv5));
+        layoutForecastAqiFaceBg.setBackgroundColor(getContext().getResources().getColor(R.color.card_face_lv5));
+        imageForecastAqiFace.setImageResource(R.drawable.ic_face_purple);
+        break;
+      }
     }
 
     return convertView;

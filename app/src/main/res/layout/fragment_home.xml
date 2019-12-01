@@ -30,6 +30,8 @@
     <!-- Main Contents - Array List -->
     <ListView
       android:id="@+id/list_home_forecast"
+      android:divider="@null"
+      android:dividerHeight="0dp"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
