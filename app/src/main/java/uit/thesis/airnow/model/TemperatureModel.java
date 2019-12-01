@@ -1,29 +1,27 @@
-package uit.thesis.airnow.retrofit;
+package uit.thesis.airnow.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataTemperature {
+public class TemperatureModel {
+
   @SerializedName("time")
   private String time;
-
-  public String getTime() {
-
-    return time;
-  }
 
   @SerializedName("degrees")
   private double degrees;
 
-  public double getDegrees() {
-
-    return degrees;
-  }
-
   @SerializedName("location")
   private String location;
 
-  public String getLocation() {
+  public String getTime() {
+    return time;
+  }
 
+  public double getDegrees() {
+    return degrees;
+  }
+
+  public String getLocation() {
     return location;
   }
 }

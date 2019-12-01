@@ -4,47 +4,48 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import uit.thesis.airnow.model.AQIModel;
+import uit.thesis.airnow.model.ForecastModel;
+import uit.thesis.airnow.model.HumidityModel;
+import uit.thesis.airnow.model.LocationModel;
+import uit.thesis.airnow.model.TemperatureModel;
+
 public class DataClient {
 
   @SerializedName("aqi")
-  private List<DataAQI> dataAQIList;
+  private List<AQIModel> dataAQIList;
 
-  public List<DataAQI> getDataAQIList() {
+  @SerializedName("forecast")
+  private List<ForecastModel> dataForecastList;
 
+
+  @SerializedName("humidity")
+  private List<HumidityModel> dataHumidityList;
+
+  @SerializedName("temperature")
+  private List<TemperatureModel> dataTemperatureList;
+
+  @SerializedName("locations")
+  private List<LocationModel> dataLocations;
+
+  public List<AQIModel> getDataAQIList() {
     return dataAQIList;
   }
 
-  @SerializedName("forecast")
-  private List<DataForecast> dataForecastList;
-
-  public List<DataForecast> getDataForecastList() {
+  public List<ForecastModel> getDataForecastList() {
     return dataForecastList;
   }
 
-  @SerializedName("humidity")
-  private List<DataHumidity> dataHumidityList;
-
-  public List<DataHumidity> getDataHumidityList() {
-
+  public List<HumidityModel> getDataHumidityList() {
     return dataHumidityList;
   }
 
-  @SerializedName("temperature")
-  private List<DataTemperature> dataTemperatureList;
-
-  public List<DataTemperature> getDataTemperatureList() {
-
+  public List<TemperatureModel> getDataTemperatureList() {
     return dataTemperatureList;
   }
 
-  @SerializedName("locations")
-  private List<String> dataLocations;
-
-  public List<String> getDataLocationsList() {
-
+  public List<LocationModel> getDataLocations() {
     return dataLocations;
   }
-
-
 }
 
