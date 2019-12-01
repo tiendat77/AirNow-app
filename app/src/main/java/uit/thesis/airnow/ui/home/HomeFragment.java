@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import uit.thesis.airnow.Mock;
 import uit.thesis.airnow.R;
-import uit.thesis.airnow.model.Forecast;
+import uit.thesis.airnow.model.ForecastModel;
 import uit.thesis.airnow.util.ForecastAdapter;
 
 public class HomeFragment extends Fragment {
@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
   ListView forecastListView;
 
   /* List */
-  private ArrayList<Forecast> forecasts = new ArrayList<Forecast>();
+  private ArrayList<ForecastModel> forecastModels = new ArrayList<ForecastModel>();
   private ForecastAdapter adapter;
 
   // </editor-fold>
@@ -57,15 +57,15 @@ public class HomeFragment extends Fragment {
   }
 
   private void initModel() {
-    for (int i = 0; i < Mock.forecasts.length; i++) {
-      forecasts.add(Mock.forecasts[i]);
+    for (int i = 0; i < Mock.forecastModels.length; i++) {
+      forecastModels.add(Mock.forecastModels[i]);
     }
 
-    adapter = new ForecastAdapter(this.getContext(), forecasts);
+    adapter = new ForecastAdapter(this.getContext(), forecastModels);
 
     forecastListView.setAdapter(adapter);
 
-    Log.d(TAG, Mock.forecasts[0].location);
+    Log.d(TAG, Mock.forecastModels[0].location);
 
     Snackbar.make(getActivity().findViewById(R.id.container), "Done setup!", Snackbar.LENGTH_SHORT)
         .setAction("OK", new View.OnClickListener() {
@@ -73,8 +73,7 @@ public class HomeFragment extends Fragment {
           public void onClick(View view) {
             // Do something here
           }
-        })
-        .show();
+        });
   }
 
 }
