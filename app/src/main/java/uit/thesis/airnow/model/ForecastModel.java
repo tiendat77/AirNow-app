@@ -2,6 +2,8 @@ package uit.thesis.airnow.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DecimalFormat;
+
 public class ForecastModel {
 
   @SerializedName("aqi")
@@ -25,6 +27,8 @@ public class ForecastModel {
   @SerializedName("time")
   private String time;
 
+  private static DecimalFormat df2 = new DecimalFormat("#.##");
+
   public ForecastModel(String location, double temperature, int aqi, double pollutant, int humidity, String status) {
     this.location = location;
     this.temperature = temperature;
@@ -38,20 +42,20 @@ public class ForecastModel {
     return location;
   }
 
-  public double getTemperature() {
-    return temperature;
+  public int getTemperature() {
+    return (int) Math.round(temperature);
   }
 
   public int getAqi() {
     return aqi;
   }
 
-  public double getPollutant() {
-    return pollutant;
+  public String getPollutant() {
+    return df2.format(pollutant);
   }
 
-  public double getHumidity() {
-    return humidity;
+  public int getHumidity() {
+    return (int) Math.round(humidity);
   }
 
   public String getStatus() {

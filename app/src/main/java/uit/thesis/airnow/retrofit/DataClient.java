@@ -16,36 +16,35 @@ public class DataClient {
   private List<AQIModel> dataAQIList;
 
   @SerializedName("forecast")
-  private List<ForecastModel> dataForecastList;
-
+  private List<ForecastModel> forecastList;
 
   @SerializedName("humidity")
-  private List<HumidityModel> dataHumidityList;
+  private List<HumidityModel> humidityList;
 
   @SerializedName("temperature")
-  private List<TemperatureModel> dataTemperatureList;
+  private List<TemperatureModel> temperatureList;
 
   @SerializedName("locations")
-  private List<LocationModel> dataLocations;
+  private List<LocationModel> locationsList;
 
   public List<AQIModel> getDataAQIList() {
     return dataAQIList;
   }
 
-  public List<ForecastModel> getDataForecastList() {
-    return dataForecastList;
+  public List<ForecastModel> getForecastList() {
+    return forecastList;
   }
 
-  public List<HumidityModel> getDataHumidityList() {
-    return dataHumidityList;
+  public List<HumidityModel> getHumidityList() {
+    return humidityList;
   }
 
-  public List<TemperatureModel> getDataTemperatureList() {
-    return dataTemperatureList;
+  public List<TemperatureModel> getTemperatureList() {
+    return temperatureList;
   }
 
-  public List<LocationModel> getDataLocations() {
-    return dataLocations;
+  public List<LocationModel> getLocationsList() {
+    return locationsList;
   }
 }
 
