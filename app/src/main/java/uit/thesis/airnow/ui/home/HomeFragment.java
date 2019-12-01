@@ -24,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import uit.thesis.airnow.Mock;
 import uit.thesis.airnow.R;
+import uit.thesis.airnow.model.AQIModel;
 import uit.thesis.airnow.model.ForecastModel;
 import uit.thesis.airnow.retrofit.APIService;
 import uit.thesis.airnow.retrofit.APIUtils;
-import uit.thesis.airnow.retrofit.DataAQI;
 import uit.thesis.airnow.retrofit.DataClient;
 import uit.thesis.airnow.util.ForecastAdapter;
 
@@ -84,8 +84,6 @@ public class HomeFragment extends Fragment {
 
     forecastListView.setAdapter(adapter);
 
-    Log.d(TAG, Mock.forecastModels[0].location);
-
     Snackbar.make(getActivity().findViewById(R.id.container), "Done setup!", Snackbar.LENGTH_SHORT)
         .setAction("OK", new View.OnClickListener() {
           @Override
@@ -107,9 +105,9 @@ public class HomeFragment extends Fragment {
           DataClient data = response.body();
 
           String dataJson = gson.toJson(data.getDataAQIList());
-          List<DataAQI> dataAQIList = data.getDataAQIList();
+          List<AQIModel> dataAQIList = data.getDataAQIList();
 
-          for(DataAQI dataAQI: dataAQIList) {
+          for(AQIModel dataAQI: dataAQIList) {
             Log.d(TAG, dataAQI.getDescription());
           }
 
@@ -120,7 +118,7 @@ public class HomeFragment extends Fragment {
       @Override
       public void onFailure(Call<DataClient> call, Throwable t) {
         Log.d(TAG, t.getMessage());
-        Snackbar.make(getActivity().findViewById(R.id.container), "Error occurred. Please check your internet connection!", Snackbar.LENGTH_SHORT)
+        Snackbar.make(getActivity().findViewById(R.id.container), "Please check internet connection!", Snackbar.LENGTH_SHORT)
             .setAction("OK", new View.OnClickListener() {
               @Override
               public void onClick(View view) {

@@ -1,27 +1,27 @@
-package uit.thesis.airnow.retrofit;
+package uit.thesis.airnow.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataHumidity {
+public class HumidityModel {
+
   @SerializedName("time")
   private String time;
+
+  @SerializedName("humidity")
+  private double humidity;
+
+  @SerializedName("location")
+  private String location;
 
   public String getTime() {
     return time;
   }
 
-  @SerializedName("humidity")
-  private int humidity;
-
-  public int getHumidity() {
+  public double getHumidity() {
     return humidity;
   }
-
-  @SerializedName("location")
-  private String location;
 
   public String getLocation() {
     return location;
   }
 }
-
