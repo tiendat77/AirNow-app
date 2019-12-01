@@ -26,6 +26,5 @@ public class DataClient {
   public List<DataTemperature> getDataTemperatureList() {
     return dataTemperatureList;
   }
-
 }
 
