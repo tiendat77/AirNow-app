@@ -14,16 +14,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import uit.thesis.airnow.Mock;
 import uit.thesis.airnow.R;
 import uit.thesis.airnow.model.ForecastModel;
 import uit.thesis.airnow.retrofit.APIService;
