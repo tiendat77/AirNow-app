@@ -3,6 +3,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".ui.settings.Settings">
 
   <LinearLayout
@@ -11,15 +12,79 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    android:paddingBottom="20dp">
+    android:paddingBottom="20dp"
+    android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-      android:id="@+id/button_settings_smart_config"
-      android:layout_width="wrap_content"
+    <LinearLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:paddingRight="10dp"
-      android:paddingLeft="10dp"
-      android:text="@string/title_smart_config"/>
+      android:orientation="horizontal">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textSize="18dp"
+        android:layout_weight=".5"
+        android:text="Config wifi on device" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_settings_smart_config"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/title_smart_config"
+        android:textColor="#5E5555"
+        app:icon="@drawable/ic_smart_config_black_24dp"
+        app:iconSize="15dp"
+        app:iconTint="#FF000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginTop="20dp">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textSize="18dp"
+        android:layout_weight=".5"
+        android:text="Celsius/Fahrenheit"/>
+
+      <com.google.android.material.button.MaterialButtonToggleGroup
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+          android:id="@+id/button_settings_celsius"
+          style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight=".5"
+          android:text="°C"/>
+
+        <com.google.android.material.button.MaterialButton
+          android:id="@+id/button_settings_fahrenheit"
+          style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight=".5"
+          android:text="°F"/>
+
+      </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </LinearLayout>
 
   </LinearLayout>
 

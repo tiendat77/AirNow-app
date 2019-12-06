@@ -61,6 +61,14 @@ public class LineChartItem extends ChartItem {
     xAxis.setTypeface(mTf);
     xAxis.setDrawGridLines(false);
     xAxis.setDrawAxisLine(true);
+//    xAxis.setValueFormatter(new ValueFormatter() {
+//      private final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM", Locale.ENGLISH);
+//
+//      @Override
+//      public String getFormattedValue(float value) {
+//        return sdf.format(new Date((long) value));
+//      }
+//    });
 
     YAxis leftAxis = holder.chart.getAxisLeft();
     leftAxis.setTypeface(mTf);
