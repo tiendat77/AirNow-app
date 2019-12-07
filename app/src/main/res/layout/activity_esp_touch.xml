@@ -53,6 +53,7 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="4dp"
       android:layout_marginLeft="4dp"
+      android:layout_marginTop="8dp"
       android:singleLine="true"
       android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -69,7 +70,7 @@
       android:id="@+id/ap_password_edit"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:inputType="textPassword"
+      android:inputType="text"
       android:singleLine="true" />
   </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,13 +120,13 @@
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/confirm_btn"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="10dp"
     android:text="@string/confirm" />
 
 </LinearLayout>
