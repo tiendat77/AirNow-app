@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -22,10 +25,8 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,12 +50,16 @@ public class DashboardFragment extends Fragment {
   private DashboardViewModel dashboardViewModel;
   private SwipeRefreshLayout swipeRefreshLayout;
   private ListView chartListView;
-  private ChartDataAdapter cda;
+  private AutoCompleteTextView locationsAutocomplete;
 
+  private ChartDataAdapter cda;
   private ArrayList<ChartItem> list = new ArrayList<>();
   private ArrayList<Entry> aqiList = new ArrayList<>();
   private ArrayList<Entry> temperatureList = new ArrayList<>();
   private ArrayList<Entry> humidityList = new ArrayList<>();
+
+  private ArrayList<String> locationsList = new ArrayList<>();
+  private ArrayAdapter<String> locationsAdapter;
 
   private SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
   // </editor-fold>
@@ -75,23 +80,78 @@ public class DashboardFragment extends Fragment {
   private void initView(View root) {
     swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_dashboard);
     chartListView = (ListView) root.findViewById(R.id.list_dashboard_chart);
+    locationsAutocomplete = (AutoCompleteTextView) root.findViewById(R.id.text_home_location);
 
-    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//      @Override
+//      public void onRefresh() {
+//        refresh();
+//      }
+//    });
+  }
+
+  private void initModel() {
+    getLocations();
+
+    locationsAutocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
-      public void onRefresh() {
-        refresh();
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Snackbar.make(getActivity().findViewById(R.id.container), "Selected " + parent.getItemAtPosition(position), Snackbar.LENGTH_SHORT)
+            .setAction("OK", new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                // Do something here
+              }
+            })
+            .show();
+        InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        in.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
+        refresh(parent.getItemAtPosition(position).toString());
       }
     });
   }
 
-  private void initModel() {
-    swipeRefreshLayout.setRefreshing(true);
-    refresh();
+  private void getLocations() {
+    APIService APIService = APIUtils.getData();
+    Call<DataClient> callback = APIService.getLocations();
+    callback.enqueue(new Callback<DataClient>() {
+      @Override
+      public void onResponse(Call<DataClient> call, Response<DataClient> response) {
+        if (response != null) {
+          DataClient data = response.body();
+
+          List<String> locationModelList = data.getLocationsList();
+
+          locationsList.clear();
+          locationsList.addAll(locationModelList);
+
+          locationsAdapter = new ArrayAdapter<>(getContext(), R.layout.item_location_dropdown, locationsList);
+          locationsAutocomplete.setAdapter(locationsAdapter);
+
+          locationsAutocomplete.setText(locationsList.get(0), false);
+          swipeRefreshLayout.setRefreshing(true);
+          refresh(locationsList.get(0));
+        }
+      }
+
+      @Override
+      public void onFailure(Call<DataClient> call, Throwable t) {
+        Log.d(TAG, t.getMessage());
+        Snackbar.make(getActivity().findViewById(R.id.container), "Please check internet connection!", Snackbar.LENGTH_SHORT)
+            .setAction("OK", new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                // Do something here
+              }
+            })
+            .show();
+      }
+    });
   }
 
-  private void refresh() {
+  private void refresh(String location) {
     APIService APIService = APIUtils.getData();
-    Call<DataClient> callback = APIService.getAirdata(28, "Thủ Đức");
+    Call<DataClient> callback = APIService.getAirdata(28, location);
     callback.enqueue(new Callback<DataClient>() {
       @Override
       public void onResponse(Call<DataClient> call, Response<DataClient> response) {
@@ -223,7 +283,9 @@ public class DashboardFragment extends Fragment {
     return new LineData(sets);
   }
 
-  /** adapter that supports 3 different item types */
+  /**
+   * adapter that supports 3 different item types
+   */
   private class ChartDataAdapter extends ArrayAdapter<ChartItem> {
 
     ChartDataAdapter(Context context, List<ChartItem> objects) {
