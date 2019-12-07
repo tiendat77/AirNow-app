@@ -1,5 +1,7 @@
 package com.espressif.iot.esptouch.task;
 
+import com.espressif.iot.esptouch.EsptouchTask;
+
 public class EsptouchTaskParameter implements IEsptouchTaskParameter {
 
     private static int _datagramCount = 0;

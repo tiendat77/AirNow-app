@@ -3,24 +3,24 @@
 3    package="com.espressif.iot.esptouch.test" >
 4
 5    <uses-sdk
-5-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:5:5-74
+5-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:5:5-74
 6        android:minSdkVersion="14"
-6-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:5:15-41
-7        android:targetSdkVersion="29" />
-7-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:5:42-71
+6-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:5:15-41
+7        android:targetSdkVersion="27" />
+7-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:5:42-71
 8
 9    <instrumentation
-9-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:11:5-15:81
-10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:11:22-76
+9-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:11:5-15:81
+10        android:name="android.support.test.runner.AndroidJUnitRunner"
+10-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:11:22-83
 11        android:functionalTest="false"
-11-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:14:22-52
+11-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:14:22-52
 12        android:handleProfiling="false"
-12-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:13:22-53
+12-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:13:22-53
 13        android:label="Tests for com.espressif.iot.esptouch.test"
-13-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:15:22-79
+13-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:15:22-79
 14        android:targetPackage="com.espressif.iot.esptouch.test" />
-14-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:12:22-77
+14-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:12:22-77
 15
 16    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 16-->[__tested_artifact__::esptouch] /home/tiendat/Code/AirNow/app/esptouch/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-76
@@ -33,11 +33,11 @@
 18-->[__tested_artifact__::esptouch] /home/tiendat/Code/AirNow/app/esptouch/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:22-73
 19
 20    <application android:debuggable="true" >
-20-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:7:5-9:19
-20-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:7:18-43
+20-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:7:5-9:19
+20-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:7:18-43
 21        <uses-library android:name="android.test.runner" />
-21-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:8:9-60
-21-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger507463129118573322.xml:8:23-57
+21-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:8:9-60
+21-->/home/tiendat/Code/AirNow/app/esptouch/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger5044469551708000877.xml:8:23-57
 22    </application>
 23
 24</manifest>
