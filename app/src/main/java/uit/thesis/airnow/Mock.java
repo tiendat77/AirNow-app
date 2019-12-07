@@ -1,7 +1,6 @@
 package uit.thesis.airnow;
 
 import uit.thesis.airnow.model.ForecastModel;
-import uit.thesis.airnow.model.LocationModel;
 
 public class Mock {
 
@@ -12,11 +11,11 @@ public class Mock {
       new ForecastModel("Krakow", 8, 171, 95, 57, "Unhealthy"),
   };
 
-  public static LocationModel[] locationModels = new LocationModel[] {
-      new LocationModel("Kyoto"),
-      new LocationModel("Singapore"),
-      new LocationModel("Shenyang"),
-      new LocationModel("Krakow"),
+  public static String[] locationModels = new String[] {
+      "Kyoto",
+      "Singapore",
+      "Shenyang",
+      "Krakow",
   };
 
 }
