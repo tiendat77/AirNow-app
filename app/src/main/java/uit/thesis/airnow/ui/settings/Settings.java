@@ -56,7 +56,7 @@ public class Settings extends Fragment implements View.OnClickListener {
   public void onClick(View v) {
     switch (v.getId()) {
       case R.id.button_settings_smart_config: {
-        Intent intent = new Intent(this.getActivity(), EsptouchActivity.class); // TODO: insert param for this constructor
+        Intent intent = new Intent(this.getActivity(), EsptouchActivity.class);
         startActivity(intent);
         break;
       }

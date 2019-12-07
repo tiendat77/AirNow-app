@@ -48,8 +48,6 @@ public class EsptouchActivity extends AppCompatActivity implements OnClickListen
 
   private static final int REQUEST_PERMISSION = 0x01;
 
-  private static final int MENU_ITEM_ABOUT = 0;
-
   private TextView mApSsidTV;
   private TextView mApBssidTV;
   private EditText mApPasswordET;
@@ -241,12 +239,12 @@ public class EsptouchActivity extends AppCompatActivity implements OnClickListen
       byte[] ssid = mApSsidTV.getTag() == null ? ByteUtil.getBytesByString(mApSsidTV.getText().toString())
           : (byte[]) mApSsidTV.getTag();
       byte[] password = ByteUtil.getBytesByString(mApPasswordET.getText().toString());
-      byte [] bssid = TouchNetUtil.parseBssid2bytes(mApBssidTV.getText().toString());
+      byte[] bssid = TouchNetUtil.parseBssid2bytes(mApBssidTV.getText().toString());
       byte[] deviceCount = mDeviceCountET.getText().toString().getBytes();
       byte[] broadcast = {(byte) (mPackageModeGroup.getCheckedRadioButtonId() == R.id.package_broadcast
           ? 1 : 0)};
 
-      if(mTask != null) {
+      if (mTask != null) {
         mTask.cancelEsptouch();
       }
       mTask = new EsptouchAsyncTask4(this);
