@@ -10,29 +10,44 @@
     android:orientation="vertical">
 
     <!--Toolbar-->
-
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:hint="@string/hint_text"
-      android:paddingStart="@dimen/content_padding_start_end"
-      android:paddingEnd="@dimen/content_padding_start_end">
+      android:orientation="horizontal"
+      android:descendantFocusability="beforeDescendants"
+      android:focusableInTouchMode="true">
 
-      <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/text_home_location"
+      <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_gravity="center"
+        android:hint="@string/hint_text"
+        android:paddingStart="@dimen/content_padding_start_end"
+        android:paddingEnd="@dimen/content_padding_start_end">
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <AutoCompleteTextView
+          android:id="@+id/text_home_location"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 
     <!-- Main Contents - Array List -->
-    <ListView
-      android:id="@+id/list_home_forecast"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/swipe_refresh_home"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_height="match_parent">
 
+      <ListView
+        android:id="@+id/list_home_forecast"
+        android:divider="@null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
   </LinearLayout>
 

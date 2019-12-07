@@ -89,7 +89,7 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
         break;
       }
 
-      case "Unhealthy for sensitive group": {
+      case "Unhealthy for Sensitive Groups": {
         textForecastAqi.setTextColor(getContext().getResources().getColor(R.color.card_text_lv3));
         textForecastAqiType.setTextColor(getContext().getResources().getColor(R.color.card_text_lv3));
         textForecastStatus.setTextColor(getContext().getResources().getColor(R.color.card_text_lv3));
@@ -110,6 +110,18 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
         layoutForecastAqiBg.setBackgroundColor(getContext().getResources().getColor(R.color.card_bg_lv4));
         layoutForecastAqiFaceBg.setBackgroundColor(getContext().getResources().getColor(R.color.card_face_lv4));
         imageForecastAqiFace.setImageResource(R.drawable.ic_face_red);
+        break;
+      }
+
+      case "Very Unhealthy": {
+        textForecastAqi.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+        textForecastAqiType.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+        textForecastStatus.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+        textForecastPollutant.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
+
+        layoutForecastAqiBg.setBackgroundColor(getContext().getResources().getColor(R.color.card_bg_lv5));
+        layoutForecastAqiFaceBg.setBackgroundColor(getContext().getResources().getColor(R.color.card_face_lv5));
+        imageForecastAqiFace.setImageResource(R.drawable.ic_face_purple);
         break;
       }
     }
