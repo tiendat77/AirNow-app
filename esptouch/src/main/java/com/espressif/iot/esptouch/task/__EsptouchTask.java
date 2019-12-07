@@ -10,10 +10,10 @@ import com.espressif.iot.esptouch.IEsptouchResult;
 import com.espressif.iot.esptouch.IEsptouchTask;
 import com.espressif.iot.esptouch.protocol.EsptouchGenerator;
 import com.espressif.iot.esptouch.protocol.TouchData;
-import com.espressif.iot.esptouch.security.ITouchEncryptor;
 import com.espressif.iot.esptouch.udp.UDPSocketClient;
 import com.espressif.iot.esptouch.udp.UDPSocketServer;
 import com.espressif.iot.esptouch.util.ByteUtil;
+import com.espressif.iot.esptouch.util.EspAES;
 import com.espressif.iot.esptouch.util.TouchNetUtil;
 
 import java.net.InetAddress;
@@ -36,9 +36,9 @@ public class __EsptouchTask implements __IEsptouchTask {
     private final byte[] mApSsid;
     private final byte[] mApPassword;
     private final byte[] mApBssid;
-    private final ITouchEncryptor mEncryptor;
+    private final boolean mIsSsidHidden;
     private final Context mContext;
-    private final List<IEsptouchResult> mEsptouchResultList;
+    private volatile List<IEsptouchResult> mEsptouchResultList;
     private volatile boolean mIsSuc = false;
     private volatile boolean mIsInterrupt = false;
     private volatile boolean mIsExecuted = false;
@@ -48,19 +48,24 @@ public class __EsptouchTask implements __IEsptouchTask {
     private IEsptouchListener mEsptouchListener;
     private Thread mTask;
 
-    public __EsptouchTask(Context context, TouchData apSsid, TouchData apBssid, TouchData apPassword,
-                          ITouchEncryptor encryptor, IEsptouchTaskParameter parameter) {
+    public __EsptouchTask(Context context, TouchData apSsid, TouchData apBssid, TouchData apPassword, EspAES espAES,
+                          IEsptouchTaskParameter parameter, boolean isSsidHidden) {
         Log.i(TAG, "Welcome Esptouch " + IEsptouchTask.ESPTOUCH_VERSION);
         mContext = context;
-        mEncryptor = encryptor;
-        mApSsid = apSsid.getData();
-        mApPassword = apPassword.getData();
+        if (espAES == null) {
+            mApSsid = apSsid.getData();
+            mApPassword = apPassword.getData();
+        } else {
+            mApSsid = espAES.encrypt(apSsid.getData());
+            mApPassword = espAES.encrypt(apPassword.getData());
+        }
         mApBssid = apBssid.getData();
         mIsCancelled = new AtomicBoolean(false);
         mSocketClient = new UDPSocketClient();
         mParameter = parameter;
         mSocketServer = new UDPSocketServer(mParameter.getPortListening(),
                 mParameter.getWaitUdpTotalMillisecond(), context);
+        mIsSsidHidden = isSsidHidden;
         mEsptouchResultList = new ArrayList<>();
         mBssidTaskSucCountMap = new HashMap<>();
     }
@@ -313,7 +318,7 @@ public class __EsptouchTask implements __IEsptouchTask {
         // generator the esptouch byte[][] to be transformed, which will cost
         // some time(maybe a bit much)
         IEsptouchGenerator generator = new EsptouchGenerator(mApSsid, mApBssid,
-                mApPassword, localInetAddress, mEncryptor);
+                mApPassword, localInetAddress, mIsSsidHidden);
         // listen the esptouch result asyn
         __listenAsyn(mParameter.getEsptouchResultTotalLen());
         boolean isSuc = false;

@@ -25,6 +25,12 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity
+      android:name=".EsptouchActivity"
+      android:label="@string/title_smart_config"
+      android:parentActivityName=".MainActivity">
+    </activity>
   </application>
 
 </manifest>

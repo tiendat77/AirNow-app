@@ -12,8 +12,8 @@
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/navigation_smart_config"
+        android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings_black_24dp"
-        android:title="@string/title_smart_config" />
+        android:title="@string/title_settings" />
 
 </menu>

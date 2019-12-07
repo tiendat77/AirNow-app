@@ -4,10 +4,10 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="29" />
+        android:targetSdkVersion="27" />
 
     <instrumentation
-        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:name="android.support.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
         android:label="Tests for com.espressif.iot.esptouch.test"

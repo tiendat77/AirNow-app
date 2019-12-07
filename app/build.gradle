@@ -40,6 +40,7 @@ dependencies {
 
     //Local library
     implementation project(':esptouch')
+    implementation project(':MPChartLib')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

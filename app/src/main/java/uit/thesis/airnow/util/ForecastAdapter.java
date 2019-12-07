@@ -89,7 +89,7 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
         break;
       }
 
-      case "Unhealthy for sensitive group": {
+      case "Unhealthy for Sensitive Groups": {
         textForecastAqi.setTextColor(getContext().getResources().getColor(R.color.card_text_lv3));
         textForecastAqiType.setTextColor(getContext().getResources().getColor(R.color.card_text_lv3));
         textForecastStatus.setTextColor(getContext().getResources().getColor(R.color.card_text_lv3));
@@ -113,7 +113,7 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
         break;
       }
 
-      case "Very unhealthy": {
+      case "Very Unhealthy": {
         textForecastAqi.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
         textForecastAqiType.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
         textForecastStatus.setTextColor(getContext().getResources().getColor(R.color.card_text_lv5));
