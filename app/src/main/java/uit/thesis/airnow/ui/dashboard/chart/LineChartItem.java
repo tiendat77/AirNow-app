@@ -12,7 +12,6 @@ import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.LineData;
-
 import uit.thesis.airnow.R;
 
 
@@ -52,7 +51,6 @@ public class LineChartItem extends ChartItem {
     }
 
     // apply styling
-    // holder.chart.setValueTypeface(mTf);
     holder.chart.getDescription().setEnabled(false);
     holder.chart.setDrawGridBackground(false);
 
@@ -61,14 +59,22 @@ public class LineChartItem extends ChartItem {
     xAxis.setTypeface(mTf);
     xAxis.setDrawGridLines(false);
     xAxis.setDrawAxisLine(true);
-//    xAxis.setValueFormatter(new ValueFormatter() {
-//      private final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM", Locale.ENGLISH);
+
+//    final DateFormat dateFormat = new SimpleDateFormat("dd-mm hh:mm");
 //
+//    ValueFormatter formatter = new ValueFormatter() {
 //      @Override
-//      public String getFormattedValue(float value) {
-//        return sdf.format(new Date((long) value));
+//      public String getAxisLabel(float value, AxisBase axis) {
+//        Log.d("Line chart item", String.valueOf(value));
+//        Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
+//        calendar.setTimeInMillis((int) value * 1000L);
+//        Date date = calendar.getTime();
+//        return dateFormat.format(date);
 //      }
-//    });
+//    };
+//    xAxis.setGranularity(1f);
+//    xAxis.setValueFormatter(formatter);
+    xAxis.setEnabled(false);
 
     YAxis leftAxis = holder.chart.getAxisLeft();
     leftAxis.setTypeface(mTf);

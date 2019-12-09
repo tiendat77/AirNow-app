@@ -22,6 +22,6 @@
   <string name="configure_wifi_change_message">Wifi disconnected or changed</string>
   <string name="configure_result_failed">EspTouch failed</string>
   <string name="configure_result_failed_port">Create Esptouch task failed, the EspTouch port could be used by other thread</string>
-  <string name="configure_result_success">EspTouch 完成</string>
+  <string name="configure_result_success">EspTouch success</string>
   <string name="configure_result_success_item">BSSID = %1$s, InetAddress = %2$s</string>
 </resources>
