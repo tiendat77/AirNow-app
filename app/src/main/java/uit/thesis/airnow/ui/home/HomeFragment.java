@@ -127,9 +127,10 @@ public class HomeFragment extends Fragment {
 
           forecastModels.addAll(forecastList);
 
-          adapter = new ForecastAdapter(getContext(), forecastModels);
-
-          forecastListView.setAdapter(adapter);
+          if (getActivity() != null) {
+            adapter = new ForecastAdapter(getActivity(), forecastModels);
+            forecastListView.setAdapter(adapter);
+          }
         }
       }
 
@@ -164,8 +165,11 @@ public class HomeFragment extends Fragment {
           locationsList.clear();
           locationsList.addAll(locationModelList);
 
-          locationsAdapter = new ArrayAdapter<>(getContext(), R.layout.item_location_dropdown, locationsList);
-          locationsAutocomplete.setAdapter(locationsAdapter);
+          if (getActivity() != null) {
+            locationsAdapter = new ArrayAdapter<>(getActivity(), R.layout.item_location_dropdown, locationsList);
+            locationsAutocomplete.setAdapter(locationsAdapter);
+          }
+
         }
       }
 
