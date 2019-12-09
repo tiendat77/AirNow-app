@@ -125,8 +125,10 @@ public class DashboardFragment extends Fragment {
           locationsList.clear();
           locationsList.addAll(locationModelList);
 
-          locationsAdapter = new ArrayAdapter<>(getContext(), R.layout.item_location_dropdown, locationsList);
-          locationsAutocomplete.setAdapter(locationsAdapter);
+          if (getActivity() != null) {
+            locationsAdapter = new ArrayAdapter<>(getActivity(), R.layout.item_location_dropdown, locationsList);
+            locationsAutocomplete.setAdapter(locationsAdapter);
+          }
 
           locationsAutocomplete.setText(locationsList.get(0), false);
           swipeRefreshLayout.setRefreshing(true);
