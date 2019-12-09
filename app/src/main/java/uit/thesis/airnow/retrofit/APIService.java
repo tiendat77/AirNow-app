@@ -14,4 +14,7 @@ public interface APIService {
 
   @GET("forecast")
   Call<DataClient> getForecast();
+
+  @GET("forecast")
+  Call<DataClient> getForecast(@Query("location") String location);
 }

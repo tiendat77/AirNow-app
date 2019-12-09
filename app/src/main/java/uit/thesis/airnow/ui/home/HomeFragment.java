@@ -108,10 +108,10 @@ public class HomeFragment extends Fragment {
 
     APIService APIService = APIUtils.getData();
     Call<DataClient> callback;
-    if (location == "") {
+    if (location == "" || location == "None") {
       callback = APIService.getForecast();
     } else {
-      callback = APIService.getForecast(); // TODO: add param to get forecast function
+      callback = APIService.getForecast(location);
     }
 
     callback.enqueue(new Callback<DataClient>() {
@@ -162,6 +162,7 @@ public class HomeFragment extends Fragment {
           List<String> locationModelList = data.getLocationsList();
 
           locationsList.clear();
+          locationsList.add("None");
           locationsList.addAll(locationModelList);
 
           if (getActivity() != null) {
