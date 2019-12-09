@@ -25,7 +25,6 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +60,7 @@ public class DashboardFragment extends Fragment {
   private ArrayList<String> locationsList = new ArrayList<>();
   private ArrayAdapter<String> locationsAdapter;
 
-  private SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+  //  private DateFormat formatter= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
   // </editor-fold>
 
 
@@ -82,12 +81,13 @@ public class DashboardFragment extends Fragment {
     chartListView = (ListView) root.findViewById(R.id.list_dashboard_chart);
     locationsAutocomplete = (AutoCompleteTextView) root.findViewById(R.id.text_home_location);
 
-//    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//      @Override
-//      public void onRefresh() {
-//        refresh();
-//      }
-//    });
+    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+        refresh(locationsList.get(0));
+        locationsAutocomplete.setText(locationsList.get(0), false);
+      }
+    });
   }
 
   private void initModel() {
@@ -149,9 +149,9 @@ public class DashboardFragment extends Fragment {
     });
   }
 
-  private void refresh(String location) {
+  private void refresh(final String location) {
     APIService APIService = APIUtils.getData();
-    Call<DataClient> callback = APIService.getAirdata(28, location);
+    Call<DataClient> callback = APIService.getAirdata(35, location);
     callback.enqueue(new Callback<DataClient>() {
       @Override
       public void onResponse(Call<DataClient> call, Response<DataClient> response) {
@@ -195,7 +195,6 @@ public class DashboardFragment extends Fragment {
   private LineData getAqiData(List<AQIModel> aqiModels) {
     ArrayList<Entry> values = new ArrayList<>();
 
-
     for (int i = 0; i < aqiModels.size(); i++) {
       values.add(new Entry(i, aqiModels.get(i).getAqi()));
     }
@@ -222,7 +221,7 @@ public class DashboardFragment extends Fragment {
       values.add(new Entry(i, (float) temperatureModels.get(i).getDegrees()));
     }
 
-    LineDataSet d = new LineDataSet(values, "Temperature in month");
+    LineDataSet d = new LineDataSet(values, "Temperature in month °C");
     d.setLineWidth(2.5f);
     d.setCircleRadius(4.5f);
     d.setHighLightColor(Color.rgb(244, 117, 117));
@@ -244,7 +243,7 @@ public class DashboardFragment extends Fragment {
       values.add(new Entry(i, (float) humidityModels.get(i).getHumidity()));
     }
 
-    LineDataSet d = new LineDataSet(values, "Humidity in month");
+    LineDataSet d = new LineDataSet(values, "Humidity in month %");
     d.setLineWidth(2.5f);
     d.setCircleRadius(4.5f);
     d.setHighLightColor(Color.rgb(244, 117, 117));
