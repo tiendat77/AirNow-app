@@ -169,11 +169,13 @@ public class DashboardFragment extends Fragment {
           humidityList.clear();
 
           list.clear();
-          list.add(new LineChartItem(getAqiData(aqiModelList), getContext()));
-          list.add(new LineChartItem(getTemperatureData(temperatureModelList), getContext()));
-          list.add(new LineChartItem(getHumidityData(humidityModelList), getContext()));
-          cda = new ChartDataAdapter(getContext(), list);
-          chartListView.setAdapter(cda);
+          if(getActivity()!=null) {
+            list.add(new LineChartItem(getAqiData(aqiModelList), getContext()));
+            list.add(new LineChartItem(getTemperatureData(temperatureModelList), getContext()));
+            list.add(new LineChartItem(getHumidityData(humidityModelList), getContext()));
+            cda = new ChartDataAdapter(getContext(), list);
+            chartListView.setAdapter(cda);
+          }
         }
       }
 
