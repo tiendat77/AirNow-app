@@ -1,6 +1,7 @@
 package uit.thesis.airnow.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import uit.thesis.airnow.Constants;
 import uit.thesis.airnow.R;
 import uit.thesis.airnow.model.ForecastModel;
 
@@ -58,8 +60,8 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
     layoutForecastAqiBg = convertView.findViewById(R.id.layout_forecast_aqi_bg);
 
     textForecastLocation.setText(forecastModel.getLocation());
-    textForecastTemperature.setText(forecastModel.getTemperature() + "°");
-    textForecastHumidity.setText(forecastModel.getHumidity() + "%");
+    textForecastTemperature.setText(getDegreesCF(forecastModel) + "°");
+    textForecastHumidity.setText(forecastModel.getHumidityString() + "%");
     textForecastAqi.setText((String.valueOf((forecastModel.getAqi()))));
     textForecastStatus.setText(forecastModel.getStatus());
     textForecastPollutant.setText("PM2.5 | " + forecastModel.getPollutant() + " µg/m³");
@@ -129,7 +131,21 @@ public class ForecastAdapter extends ArrayAdapter<ForecastModel> {
     return convertView;
   }
 
-  public void initItemView() {
+  private String getDegreesCF(ForecastModel forecastModel) {
+    if (getDegreesPreferences()) {
+      return forecastModel.getTemperatureStringC();
+    } else {
+      return forecastModel.getTemperatureStringF();
+    }
+  }
 
+  public boolean getDegreesPreferences() {
+    SharedPreferences preferences = getContext().getSharedPreferences(Constants.PREFS_DEGREES, Context.MODE_PRIVATE);
+    boolean result = true;
+    if (preferences.contains(Constants.DEGREES_CELSIUS)) {
+      result = preferences.getBoolean(Constants.DEGREES_CELSIUS, true);
+    }
+
+    return result;
   }
 }

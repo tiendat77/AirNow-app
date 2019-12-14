@@ -1,10 +1,11 @@
 package uit.thesis.airnow.retrofit;
 
+import uit.thesis.airnow.Constants;
+
 public class APIUtils {
-  public static final String Base_Url = "http://13.59.35.198:8000/api/";
 
   public static APIService getData() {
-    return RetrofitClient.getClient(Base_Url).create(APIService.class);
+    return RetrofitClient.getClient(Constants.SERVER_API_BASE).create(APIService.class);
 
   }
 }
