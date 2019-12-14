@@ -52,7 +52,8 @@ public class ForecastModel {
   }
 
   public String getTemperatureStringF() {
-    return df1.format(temperature * (9/5) + 32);
+    double temperatureF = (double) (this.temperature * (1.8)) + 32.0;
+    return df1.format(temperatureF);
   }
 
   public int getHumidity() {
