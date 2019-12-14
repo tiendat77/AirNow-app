@@ -30,7 +30,7 @@ public class ForecastModel {
   private static DecimalFormat df2 = new DecimalFormat("#.##");
   private static DecimalFormat df1 = new DecimalFormat("#.#");
 
-  public ForecastModel(String location, double temperature, int aqi, double pollutant, int humidity, String status) {
+  public ForecastModel(String location, double temperature, int aqi, double pollutant, double humidity, String status) {
     this.location = location;
     this.temperature = temperature;
     this.aqi = aqi;

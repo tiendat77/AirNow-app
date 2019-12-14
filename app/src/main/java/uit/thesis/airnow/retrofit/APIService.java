@@ -17,4 +17,7 @@ public interface APIService {
 
   @GET("forecast")
   Call<DataClient> getForecast(@Query("location") String location);
+
+  @GET("city")
+  Call<DataClient> getAirVisual(@Query("country") String country, @Query("state") String state, @Query("city") String city, @Query("key") String key);
 }
