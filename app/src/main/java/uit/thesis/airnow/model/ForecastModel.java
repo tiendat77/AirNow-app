@@ -28,6 +28,7 @@ public class ForecastModel {
   private String time;
 
   private static DecimalFormat df2 = new DecimalFormat("#.##");
+  private static DecimalFormat df1 = new DecimalFormat("#.#");
 
   public ForecastModel(String location, double temperature, int aqi, double pollutant, int humidity, String status) {
     this.location = location;
@@ -46,6 +47,22 @@ public class ForecastModel {
     return (int) Math.round(temperature);
   }
 
+  public String getTemperatureStringC() {
+    return df1.format(temperature);
+  }
+
+  public String getTemperatureStringF() {
+    return df1.format(temperature * (9/5) + 32);
+  }
+
+  public int getHumidity() {
+    return (int) Math.round(humidity);
+  }
+
+  public String getHumidityString() {
+    return df1.format(humidity);
+  }
+
   public int getAqi() {
     return aqi;
   }
@@ -54,9 +71,6 @@ public class ForecastModel {
     return df2.format(pollutant);
   }
 
-  public int getHumidity() {
-    return (int) Math.round(humidity);
-  }
 
   public String getStatus() {
     return status;
