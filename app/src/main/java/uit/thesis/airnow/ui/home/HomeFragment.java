@@ -26,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import uit.thesis.airnow.R;
+import uit.thesis.airnow.model.AirVisualModel;
 import uit.thesis.airnow.model.ForecastModel;
 import uit.thesis.airnow.retrofit.APIService;
 import uit.thesis.airnow.retrofit.APIUtils;
@@ -126,10 +127,8 @@ public class HomeFragment extends Fragment {
 
           forecastModels.addAll(forecastList);
 
-          if (getActivity() != null) {
-            adapter = new ForecastAdapter(getActivity(), forecastModels);
-            forecastListView.setAdapter(adapter);
-          }
+          getAirVisual();
+
         }
       }
 
@@ -171,6 +170,46 @@ public class HomeFragment extends Fragment {
           }
 
         }
+      }
+
+      @Override
+      public void onFailure(Call<DataClient> call, Throwable t) {
+        Log.d(TAG, t.getMessage());
+        Snackbar.make(getActivity().findViewById(R.id.container), "Please check internet connection!", Snackbar.LENGTH_SHORT)
+            .setAction("OK", new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                // Do something here
+              }
+            })
+            .show();
+      }
+    });
+  }
+
+  public void getAirVisual() {
+    APIService APIService = APIUtils.getAirVisual();
+    Call<DataClient> callback = APIService.getAirVisual("Vietnam", "Ho Chi Minh City", "Ho Chi Minh City", "e2579d92-3989-40e9-868a-693134233ed8");
+    callback.enqueue(new Callback<DataClient>() {
+      @Override
+      public void onResponse(Call<DataClient> call, Response<DataClient> response) {
+        DataClient data = response.body();
+
+        AirVisualModel airVisualModel = data.getAirVisualModel();
+
+        ForecastModel forecastModel = airVisualModel.getForecastModel();
+        forecastModels.add(forecastModel);
+
+        if (getActivity() != null) {
+          adapter = new ForecastAdapter(getActivity(), forecastModels);
+          forecastListView.setAdapter(adapter);
+        }
+
+        Log.d(TAG, airVisualModel.getCity() + "");
+        Log.d(TAG, airVisualModel.getAqius() + "");
+        Log.d(TAG, forecastModel.getStatus() + "");
+        Log.d(TAG, airVisualModel.getTemperature() + "");
+
       }
 
       @Override
