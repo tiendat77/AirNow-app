@@ -29,7 +29,7 @@ public class AirVisualModel {
   }
 
   public ForecastModel getForecastModel() {
-    String city = this.city + "(AV)";
+    String city = "Ho Chi Minh (AirVisual)";
     double temperature = (double) getTemperature();
     int aqi = getAqius();
     double pollutant = aqi2pollutant(aqi);
@@ -40,12 +40,24 @@ public class AirVisualModel {
 
   public String getStatus(int aqi) {
     String status = "";
-    // TODO: implement action here
+    if (aqi > 0 && aqi < 51) {
+      status = "Good";
+    } else if (aqi > 50 && aqi < 101) {
+      status = "Moderate";
+    } else if (aqi > 100 && aqi < 151) {
+      status = "Unhealthy for Sensitive Groups";
+    } else if (aqi > 150 && aqi < 201) {
+      status = "Unhealthy";
+    } else if (aqi > 200 && aqi < 301) {
+      status = "Very Unhealthy";
+    } else if (aqi > 300) {
+      status = "Hazardous";
+    }
     return status;
   }
 
   public double aqi2pollutant(int aqi) {
-    double result = (double) 0.1 * aqi;
+    double result = (double) 10.1 * aqi;
     // TODO: implement action here
     return result;
   }

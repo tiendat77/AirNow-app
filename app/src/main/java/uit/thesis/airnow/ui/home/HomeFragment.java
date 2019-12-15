@@ -75,7 +75,6 @@ public class HomeFragment extends Fragment {
       @Override
       public void onRefresh() {
         refresh("");
-        getAirVisual();
       }
     });
   }
@@ -85,7 +84,6 @@ public class HomeFragment extends Fragment {
 
     swipeRefreshLayout.setRefreshing(true);
     refresh("");
-    getAirVisual();
 
     locationsAutocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
@@ -129,10 +127,8 @@ public class HomeFragment extends Fragment {
 
           forecastModels.addAll(forecastList);
 
-          if (getActivity() != null) {
-            adapter = new ForecastAdapter(getActivity(), forecastModels);
-            forecastListView.setAdapter(adapter);
-          }
+          getAirVisual();
+
         }
       }
 
@@ -204,10 +200,14 @@ public class HomeFragment extends Fragment {
         ForecastModel forecastModel = airVisualModel.getForecastModel();
         forecastModels.add(forecastModel);
 
-        // TODO: implement real action here
+        if (getActivity() != null) {
+          adapter = new ForecastAdapter(getActivity(), forecastModels);
+          forecastListView.setAdapter(adapter);
+        }
 
         Log.d(TAG, airVisualModel.getCity() + "");
         Log.d(TAG, airVisualModel.getAqius() + "");
+        Log.d(TAG, forecastModel.getStatus() + "");
         Log.d(TAG, airVisualModel.getTemperature() + "");
 
       }
