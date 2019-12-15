@@ -12,6 +12,16 @@ public class AirVisualModel {
   @Expose
   private CurrentAirVisual currentAirVisual;
 
+  static pm25aqiModel[] pm25aqi = {
+      new pm25aqiModel(0.0, 12.0, 0, 50),
+      new pm25aqiModel(12.1, 35.4, 51, 100),
+      new pm25aqiModel(35.5, 55.4, 101, 150),
+      new pm25aqiModel(55.5, 150.4, 151, 200),
+      new pm25aqiModel(150.5, 250.4, 201, 300),
+      new pm25aqiModel(250.5, 350.4, 301, 350),
+      new pm25aqiModel(350.5, 500.4, 401, 500),
+  };
+
   public int getTemperature() {
     return currentAirVisual.getWeather().getTp();
   }
@@ -57,9 +67,15 @@ public class AirVisualModel {
   }
 
   public double aqi2pollutant(int aqi) {
-    double result = (double) 10.1 * aqi;
-    // TODO: implement action here
-    return result;
+    for (int i = 0; i < 7; i++) {
+      if (aqi >= pm25aqi[i].llow && aqi <= pm25aqi[i].lhigh) {
+        return ((pm25aqi[i].chigh - pm25aqi[i].clow) /
+            (pm25aqi[i].lhigh - pm25aqi[i].llow)) *
+            (aqi - pm25aqi[i].llow) +
+            pm25aqi[i].clow;
+      }
+    }
+    return 0;
   }
 
 }
@@ -115,5 +131,24 @@ class Pollution {
 
   public String getTs() {
     return ts;
+  }
+}
+
+// struct pm25aqi
+class pm25aqiModel {
+  public double clow;
+  public double chigh;
+  public int llow;
+  public int lhigh;
+
+  public pm25aqiModel() {
+
+  }
+
+  public pm25aqiModel(double clow, double chigh, int llow, int lhigh) {
+    this.clow = clow;
+    this.chigh = chigh;
+    this.llow = llow;
+    this.lhigh = lhigh;
   }
 }
