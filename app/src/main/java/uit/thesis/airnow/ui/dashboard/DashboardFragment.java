@@ -26,6 +26,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -198,6 +199,7 @@ public class DashboardFragment extends Fragment {
 
   private LineData getAqiData(List<AQIModel> aqiModels) {
     ArrayList<Entry> values = new ArrayList<>();
+    Collections.reverse(aqiModels);
 
     for (int i = 0; i < aqiModels.size(); i++) {
       values.add(new Entry(i, aqiModels.get(i).getAqi()));
@@ -219,7 +221,7 @@ public class DashboardFragment extends Fragment {
 
   private LineData getTemperatureData(List<TemperatureModel> temperatureModels) {
     ArrayList<Entry> values = new ArrayList<>();
-
+    Collections.reverse(temperatureModels);
 
     for (int i = 0; i < temperatureModels.size(); i++) {
       values.add(new Entry(i, (float) temperatureModels.get(i).getDegrees()));
@@ -241,7 +243,7 @@ public class DashboardFragment extends Fragment {
 
   private LineData getHumidityData(List<HumidityModel> humidityModels) {
     ArrayList<Entry> values = new ArrayList<>();
-
+    Collections.reverse(humidityModels);
 
     for (int i = 0; i < humidityModels.size(); i++) {
       values.add(new Entry(i, (float) humidityModels.get(i).getHumidity()));
@@ -257,31 +259,6 @@ public class DashboardFragment extends Fragment {
 
     ArrayList<ILineDataSet> sets = new ArrayList<>();
     sets.add(d);
-
-    return new LineData(sets);
-  }
-
-  /**
-   * generates a random ChartData object with just one DataSet
-   *
-   * @return Line data
-   */
-  private LineData generateDataLine(int cnt) {
-
-    ArrayList<Entry> values1 = new ArrayList<>();
-
-    for (int i = 0; i < 19; i++) {
-      values1.add(new Entry(i, (int) (Math.random() * 65) + 40));
-    }
-
-    LineDataSet d1 = new LineDataSet(values1, cnt + ", (1)");
-    d1.setLineWidth(2.5f);
-    d1.setCircleRadius(4.5f);
-    d1.setHighLightColor(Color.rgb(244, 117, 117));
-    d1.setDrawValues(false);
-
-    ArrayList<ILineDataSet> sets = new ArrayList<>();
-    sets.add(d1);
 
     return new LineData(sets);
   }

@@ -74,7 +74,8 @@ public class LineChartItem extends ChartItem {
 //    };
 //    xAxis.setGranularity(1f);
 //    xAxis.setValueFormatter(formatter);
-    xAxis.setEnabled(false);
+
+//    xAxis.setEnabled(false);
 
     YAxis leftAxis = holder.chart.getAxisLeft();
     leftAxis.setTypeface(mTf);
@@ -82,10 +83,11 @@ public class LineChartItem extends ChartItem {
     leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
     YAxis rightAxis = holder.chart.getAxisRight();
-    rightAxis.setTypeface(mTf);
-    rightAxis.setLabelCount(5, false);
-    rightAxis.setDrawGridLines(false);
-    rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+    rightAxis.setEnabled(false);
+//    rightAxis.setTypeface(mTf);
+//    rightAxis.setLabelCount(5, false);
+//    rightAxis.setDrawGridLines(false);
+//    rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
     // set data
     holder.chart.setData((LineData) mChartData);

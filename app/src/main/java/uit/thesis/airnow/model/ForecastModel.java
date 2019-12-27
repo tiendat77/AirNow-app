@@ -61,7 +61,7 @@ public class ForecastModel {
   }
 
   public String getHumidityString() {
-    return df1.format(humidity);
+    return String.valueOf((int) humidity);
   }
 
   public int getAqi() {
